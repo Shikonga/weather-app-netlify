@@ -7,27 +7,43 @@
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-    <main>
-        <form>
-            <input type="text" placeholder="Enter City..">
-            <button>Search</button>
+    <div class="weather-app">
+    <header>
+        <form class="search-form">
+            <input type="text" placeholder="Enter City.." class="search-city-input" required >
+            <button class="button-search">Search</button>
         </form>
-        <h1>
+    </header>
+        <main>
+            <div class="weather-app-data">
+            <div>
+        <h1 class="weather-app-city">
             Nairobi
         </h1>
-    <div>
-        <p>
+        <p class="weather-app-details" >
             Thursday 10:05, broken clouds
             <br />
-            Humidity: 95%, Wind: 6.17km/h
+            Humidity: <strong class="humidity">95%</strong>, Wind: <strong class="wind">6.17km/h</strong>
         </p>
-        <p>12C</p>
     </div>
-   
+    <div class="temperature-input">
+        <div class="weather-icon">🌥️</div>
+            <div class="temp-value">32</div> 
+            <div class="temp-unit">°C</div>        
+        </div>
+    
+        </div>
+    </main>
     <footer>
-        This was coded by Wanjiku Ngaruiya.
+        This project was coded by 
+        <a href="" target="_blank">Wanjiku Ngaruiya</a>
+        is 
+        <a href="" target="_blank">open-sourced on GitHub</a>
+        and  
+        <a href="" target="_blank">hosted on Netlify</a>
     </footer>
-</main>
+
+</div>
     <script src="src/index.js"></script>
 </body>
 </html>
