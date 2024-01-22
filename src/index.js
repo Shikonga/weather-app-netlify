@@ -9,7 +9,10 @@ function displayTemperature(response) {
 function showSearch(event) {
     event.preventDefault();
     let citySearchElement = document.querySelector("#cityInput")
-    searchCity.innerHTML = citySearchElement.value;
+    let city = citySearchElement.value;
+    let cityElement = document.querySelector("#showCity");
+    cityElement.innerHTML = city;
+
 
     let apiKey = "b2a5adcct04b33178913oc335f405433";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
@@ -51,6 +54,5 @@ function formatDate(date) {
   let currentDate = new Date();
   
   currentDateELement.innerHTML = formatDate(currentDate);
-
-  let currentTime = new Date();
+ 
 
