@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="src/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
-<body>
+ <body>
     <div class="weather-app">
     <header>
         <form class="search-form" id="search-form">
@@ -18,9 +18,7 @@
         <main>
             <div class="weather-app-data">
             <div>
-        <h1 class="weather-app-city" id="showCity">
-            Nairobi
-        </h1>
+        <h1 class="weather-app-city" id="showCity">Nairobi</h1>
         <p class="weather-app-details" >
             <span id="current-date"></span> , broken clouds
             <br />
@@ -28,13 +26,16 @@
         </p>
     </div>
     <div class="temperature-input">
+        
         <div class="weather-icon">🌥️</div>
             <div class="temp-value" id="current-temperature">32</div> 
-            <div class="temp-unit">°C</div>        
+            <div class="temp-unit"><sup>°C</sup></div>     
         </div>
-    
         </div>
-    </main>
+    </main> 
+    <section class="day-section" id="date-day-selection">
+        
+    </section> 
     <footer>
         This project was coded by 
         <a href="" target="_blank">Wanjiku Ngaruiya</a>
@@ -43,8 +44,8 @@
         and  
         <a href="https://bucolic-cannoli-c06a57.netlify.app/" target="_blank">hosted on Netlify</a>
     </footer>
-
 </div>
+
     <script src="src/index.js"></script>
 </body>
 </html>
