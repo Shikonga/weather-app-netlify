@@ -95,16 +95,16 @@ function init() {
 window.addEventListener("load", init);
 
 function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastHtml = "";
-  response.data.daily.forEach(function (day, index) {
-    if (index < 5 && day.temperature && day.temperature.current !== undefined && !isNaN(day.temperature.current)) { 
-
+  response.data.daily.forEach(function (day, index) { 
+      if (index < 5 && day.temperature && day.temperature.day !== undefined && !isNaN(day.temperature.day)) {
     forecastHtml +=
       `
       <div class="day-card">
         <div class="day-card-day">${formatDay(day.time)}</div>
         <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
-        <div>${ Math.round(day.temperature)}</div>
+        <div>${ Math.round(day.temperature.day)}&deg</div>
       </div>`;
     
     }
