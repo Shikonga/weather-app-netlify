@@ -7,12 +7,14 @@ function displayTemperature(response) {
   let currentDateELement = document.querySelector("#current-date-time");
   let date = new Date(response.data.time * 1000); 
   let iconElement = document.querySelector("#weather-icon");
+  let timezoneOffset = response.data.timezone_offset;
+  let currentDate = new Date(response.data.time * 1000 + timezoneOffset * 1000)
   
   let humidity = response.data.temperature.humidity;
   let windSpeed = response.data.wind.speed;
 
   cityElement.innerHTML = response.data.city;
-  currentDateElement.innerHTML = formatDate(new Date(response.data.time * 1000), response.data.timezone_offset);
+  currentDateElement.innerHTML = formatDate(currentDate);
   humidityElement.innerHTML = humidity + "%";
   windElement.innerHTML = windSpeed + "km/h";
   temperatureElement.innerHTML = Math.round(temperature);
@@ -41,35 +43,6 @@ function displayTemperature(response) {
   });
 }
 
-/*function formatDate(date) {
-  let minutes = date.getMinutes();
-  let hours = date.getHours();
-  let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
-}
- 
-
-let currentDate = new Date();*/
 function showSearch(event) {
   event.preventDefault();
   let citySearchElement = document.querySelector("#cityInput")
@@ -82,9 +55,6 @@ function showSearch(event) {
 
 
 function formatDate(date) {
-
-  let timezoneOffset = date.getTimezoneOffset() * 60;
-  date = new Date(date.getTime() + timezoneOffset * 1000);
 
   let minutes = date.getMinutes();
   let hours = date.getHours();
@@ -126,10 +96,9 @@ window.addEventListener("load", init);
 
 function displayForecast(response) {
   let forecastHtml = "";
-
   response.data.daily.forEach(function (day, index) {
-    if (index < 5) {
-    
+    if (index < 5 && day.temperature && day.temperature.current !== undefined && !isNaN(day.temperature.current)) { 
+
     forecastHtml +=
       `
       <div class="day-card">
@@ -137,8 +106,10 @@ function displayForecast(response) {
         <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
         <div>${ Math.round(day.temperature)}</div>
       </div>`;
+    
     }
   });
+  
 
   let forecastElement = document.querySelector("#date-day-selection");
   forecastElement.innerHTML = forecastHtml;
