@@ -95,7 +95,6 @@ function init() {
 window.addEventListener("load", init);
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecastHtml = "";
   response.data.daily.forEach(function (day, index) { 
       if (index < 5 && day.temperature && day.temperature.day !== undefined && !isNaN(day.temperature.day)) {
